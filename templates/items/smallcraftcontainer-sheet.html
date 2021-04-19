@@ -1,0 +1,29 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="header-fields">
+      <div class="row">
+          <img class="img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+          <div class="column-x3-img" >
+              <label class="label">{{localize 'sta.item.genericitem.name'}}</label>
+              <input name="name" type="text" value="{{item.name}}" placeholder="Name" data-dtype="String" />
+          </div>
+          <div class="column-x1" >
+              <label class="label" style="margin-left:10px;">{{localize 'sta.actor.belonging.other.quantity'}}</label>
+              <input type="number" name="data.quantity" style="width: calc(100% - 10px);" value="{{data.quantity}}" data-dtype="Number" />
+          </div>
+          <div class="column-x1" >
+              <label class="label">{{localize 'sta.actor.smallcraft.child'}}</label>
+              <select name="data.child">
+                {{#select data.child}}
+                {{#each availableSmallcrafts as |availableSmallcraft|}}
+                <option value="{{availableSmallcraft.data._id}}">{{availableSmallcraft.data.name}}</option>
+                {{/each}}
+                {{/select}}
+              </select>
+          </div>
+      </div>
+  </div>
+  <div class="description">
+    <label class="label">{{localize 'sta.item.genericitem.description'}}</label>
+      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+  </div>
+</form>
